@@ -15,28 +15,61 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Post',
+            name="Post",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=80)),
-                ('content', models.TextField()),
-                ('pub_date', models.DateTimeField(auto_now_add=True)),
-                ('modify_date', models.DateTimeField(auto_now=True)),
-                ('delete', models.BooleanField(default=False)),
-                ('files', models.FileField(upload_to='uploads/%Y/%m/%d/')),
-                ('writer', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=80)),
+                ("content", models.TextField()),
+                ("pub_date", models.DateTimeField(auto_now_add=True)),
+                ("modify_date", models.DateTimeField(auto_now=True)),
+                ("delete", models.BooleanField(default=False)),
+                ("files", models.FileField(upload_to="uploads/%Y/%m/%d/")),
+                (
+                    "writer",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Comment',
+            name="Comment",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('content', models.CharField(max_length=80)),
-                ('pub_date', models.DateTimeField(auto_now_add=True)),
-                ('modify_date', models.DateTimeField(auto_now=True)),
-                ('delete', models.BooleanField(default=False)),
-                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='post.post')),
-                ('writer', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("content", models.CharField(max_length=80)),
+                ("pub_date", models.DateTimeField(auto_now_add=True)),
+                ("modify_date", models.DateTimeField(auto_now=True)),
+                ("delete", models.BooleanField(default=False)),
+                (
+                    "post",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="post.post"
+                    ),
+                ),
+                (
+                    "writer",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]

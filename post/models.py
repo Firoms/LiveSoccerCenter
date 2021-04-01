@@ -9,11 +9,13 @@ class Post(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     modify_date = models.DateTimeField(auto_now=True)
     delete = models.BooleanField(default=False)
-    files = models.FileField(upload_to='uploads/%Y/%m/%d/', max_length=None, null=True, blank=True) # None 안될 시 100
+    files = models.FileField(
+        upload_to="uploads/%Y/%m/%d/", max_length=None, null=True, blank=True
+    )  # None 안될 시 100
 
     def __str__(self):
         return f"{self.id}. {self.title}"
-    
+
 
 class Comment(models.Model):
     content = models.CharField(max_length=80, null=False)
@@ -25,4 +27,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"{self.id}. {self.content}"
-
