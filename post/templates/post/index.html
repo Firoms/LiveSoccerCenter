@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="할 일 목록들을 정리하는 To-do list">
+        <title>To-do list</title>
+        <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'main/index.css' %}" />
+    </head>
+
+    <body>
+        <main>
+            {% if Post_data %}
+            {% for data in Post_data %}
+            <a>{{ data.content }}</a><br>
+            {% endfor %}
+            {% else %}
+            <p>올라온 게시글이 없습니다.</p>
+            {% endif %}
+            <form action="{% url 'post:add' %}" method="GET">
+                <input type="submit" name="" value="추가하기">
+            </form>
+        </main>
+
+    </body>
+</html>
