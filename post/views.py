@@ -1,17 +1,12 @@
 from django.shortcuts import render
 from .models import Post
-<<<<<<< HEAD
 from django.http import HttpResponse, HttpResponseRedirect
 from user.models import User
 from django.urls import reverse
-=======
-from django.http import HttpResponse
->>>>>>> 8fb7be55e2233ebc996a9214624fb21724f8c6c6
 
 
 # Create your views here.
 def index(request):
-<<<<<<< HEAD
     index_datas = Post.objects.filter(delete=False).order_by("-pub_date")
     context = {"Post_data" : index_datas}
     return render(request, "post/index.html", context)
@@ -31,9 +26,3 @@ def add(request):
         )
         add_list.save()
         return HttpResponseRedirect(reverse("post:index"))
-=======
-    # index_datas = Post.objects.filter(delete=False).order_by("-pub_date")
-    # context = {"Post_data" : index_datas}
-    print("index 호출")
-    return HttpResponse("hello")
->>>>>>> 8fb7be55e2233ebc996a9214624fb21724f8c6c6
