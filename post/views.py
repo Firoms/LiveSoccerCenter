@@ -8,8 +8,9 @@ from django.urls import reverse
 # Create your views here.
 def index(request):
     index_datas = Post.objects.filter(delete=False).order_by("-pub_date")
-    context = {"Post_data" : index_datas}
+    context = {"Post_data": index_datas}
     return render(request, "post/index.html", context)
+
 
 def add(request):
     if request.method == "GET":
@@ -21,8 +22,6 @@ def add(request):
         files = request.FILES["files"]
         # files = request.FILES.get("files", '')
         print(files)
-        add_list = Post(
-            title=title, content=content, writer=writer, files=files
-        )
+        add_list = Post(title=title, content=content, writer=writer, files=files)
         add_list.save()
         return HttpResponseRedirect(reverse("post:index"))
