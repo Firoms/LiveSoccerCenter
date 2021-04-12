@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+  <body>
+    <main>
+      <form action="{% url 'post:edit' id_data.id %}" method="POST">
+        {% csrf_token %}
+        <div>
+          <p>내용: </p><input type="text" name="title" wrap = "virtual" value="{{ id_data.title }}"><br>
+          <p>상세 내용: </p><input type="text" name="content" wrap = "virtual" value="{{ id_data.content }}"><br>
+          <p>파일업로드: </p><input type="file" name="files" accept="image/*,.pdf" value="{{ id_data.files }}"><br>
+        </div>
+        <input type="submit" name="" value="수정하기">
+      </form>
+    </main>
+
+  </body>
+
+</html>
