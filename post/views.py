@@ -3,6 +3,7 @@ from .models import Post
 from django.http import HttpResponse, HttpResponseRedirect
 from user.models import User
 from django.urls import reverse
+import mimetypes
 
 
 # Create your views here.
@@ -19,8 +20,8 @@ def add(request):
         title = request.POST["title"]
         content = request.POST["content"]
         writer = User.objects.get(pk=1)
-        files = request.FILES["files"]
-        # files = request.FILES.get("files", '')
+        # files = request.FILES["files"]
+        files = request.FILES.get("files", '')
         print(files)
         add_list = Post(title=title, content=content, writer=writer, files=files)
         add_list.save()
@@ -29,13 +30,13 @@ def add(request):
 def detail(request, post_id):
     if request.method == "GET":
         try:
-            id_data = Post.objects.get(pk=do_list_id)
-        except Do_list.DoesNotExist:
+            id_data = Post.objects.get(pk=post_id)
+        except Post.DoesNotExist:
             raise Http404("없거나 삭제된 게시물입니다.")
         context = {"id_data": id_data}
         return render(request, "post/detail.html", context)
     elif request.method == "POST":
-        id_data = Post.objects.get(pk=do_list_id)
+        id_data = Post.objects.get(pk=post_id)
         id_data.delete = True
         id_data.save()
         return HttpResponseRedirect(reverse("post:index"))
@@ -59,3 +60,11 @@ def edit(request, post_id):
         id_data.modify_date = timezone.now()
         id_data.save()
         return HttpResponseRedirect(reverse("post:index"))
+
+def download_files(request, file_path):
+    if request.method=="GET":
+        file = open(file_path, 'r')
+        mime_type = mimetypes.guess_type(file_path)[0]
+        response = HttpResponse(file, content_type=mine_type)
+        response['Content-Disposition']= "attachment; filename=%s"
+            

@@ -12,11 +12,17 @@ class Post(models.Model):
     modify_date = models.DateTimeField(auto_now=True)
     delete = models.BooleanField(default=False)
     files = models.FileField(
-        upload_to="uploads/%Y/%m/%d/", max_length=None, null=True, blank=True
+        upload_to="Post/%Y/%m/%d/", max_length=None, null=True, blank=True
     )  # None 안될 시 100
 
     def __str__(self):
         return f"{self.id}. {self.title}"
+    
+    def get_file_name(self):
+        file_dir = self.files.url.split('/')
+        file_name = file_dir[-1]
+        return file_name
+
 
 
 class Comment(models.Model):

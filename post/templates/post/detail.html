@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+  <body>
+    <main>
+      {% if id_data %}
+        <p>제목 : {{ id_data.title }}</p>
+        <p>내용 : {{ id_data.content }}</p>
+        {% if id_data.files %}
+          <p>파일 : {{ id_data.get_file_name }}</p>
+          <a class="btn" href={{ id_data.files.url }} download><img src="{{ id_data.files.url }}" alt=""></a>
+        {% endif %}
+        <form action="{% url 'post:edit' id_data.id %}" method="GET">
+          <input type="submit" name="" value="수정하기">
+        </form>
+        <form action="{% url 'post:detail' id_data.id %}" method="POST">
+          {% csrf_token %}
+          <input type="submit" name="" value="삭제하기">
+        </form>
+      {% else %}
+        <p>No information are available.</p>
+      {% endif %}
+    </main>
+  </body>
+</html>

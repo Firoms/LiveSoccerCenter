@@ -4,7 +4,7 @@
         <main>
             {% if Post_data %}
             {% for data in Post_data %}
-            <a>{{ data.content }}</a><br>
+            <a href="{% url 'post:detail' data.id %}">{{ data.content }}</a><br>
             {% endfor %}
             {% else %}
             <p>올라온 게시글이 없습니다.</p>
