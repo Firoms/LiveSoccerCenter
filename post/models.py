@@ -28,7 +28,7 @@ class Post(models.Model):
 class Comment(models.Model):
     content = models.CharField(max_length=80, null=False)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    writer = models.ForeignKey(User, on_delete=models.CASCADE)
+    writer = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
     pub_date = models.DateTimeField(auto_now_add=True)
     modify_date = models.DateTimeField(auto_now=True)
     delete = models.BooleanField(default=False)

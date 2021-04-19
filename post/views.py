@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Post
+from .models import Post, Comment
 from django.http import HttpResponse, HttpResponseRedirect
 from user.models import User
 from django.urls import reverse
@@ -31,9 +31,15 @@ def detail(request, post_id):
     if request.method == "GET":
         try:
             id_data = Post.objects.get(pk=post_id)
+            context = {"id_data": id_data}
+            try:
+                print(post_id)
+                comment_datas = Comment.objects.filter(post=post_id, delete=False)
+                context["comment_datas"]=comment_datas
+            except Comment.DoesNotExist:
+                context["comment_data"]="작성된 댓글이 없습니다."
         except Post.DoesNotExist:
             raise Http404("없거나 삭제된 게시물입니다.")
-        context = {"id_data": id_data}
         return render(request, "post/detail.html", context)
     elif request.method == "POST":
         id_data = Post.objects.get(pk=post_id)
@@ -61,10 +67,13 @@ def edit(request, post_id):
         id_data.save()
         return HttpResponseRedirect(reverse("post:index"))
 
-def download_files(request, file_path):
-    if request.method=="GET":
-        file = open(file_path, 'r')
-        mime_type = mimetypes.guess_type(file_path)[0]
-        response = HttpResponse(file, content_type=mine_type)
-        response['Content-Disposition']= "attachment; filename=%s"
-            
+def comment(request, post_id):
+    if request.method == "GET":
+        pass
+    elif request.method == "POST":
+        content = request.POST["comment"]
+        post = Post.objects.get(pk=post_id)
+        writer = User.objects.get(pk=1)
+        add_list = Comment(content=content, post=post, writer=writer)
+        add_list.save()
+        return HttpResponseRedirect(reverse("post:detail", args=(post_id,)))

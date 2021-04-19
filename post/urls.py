@@ -7,5 +7,5 @@ urlpatterns = [
     path("add", views.add, name="add"),
     path("detail/<int:post_id>/", views.detail, name="detail"),
     path("edit/<int:post_id>/", views.edit, name="edit"),
-    # path('<str:filepath>/')
+    path("comment/<int:post_id>/", views.comment, name="comment"),
 ]
