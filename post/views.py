@@ -21,11 +21,12 @@ def add(request):
         content = request.POST["content"]
         writer = User.objects.get(pk=1)
         # files = request.FILES["files"]
-        files = request.FILES.get("files", '')
+        files = request.FILES.get("files", "")
         print(files)
         add_list = Post(title=title, content=content, writer=writer, files=files)
         add_list.save()
         return HttpResponseRedirect(reverse("post:index"))
+
 
 def detail(request, post_id):
     if request.method == "GET":
@@ -35,9 +36,9 @@ def detail(request, post_id):
             try:
                 print(post_id)
                 comment_datas = Comment.objects.filter(post=post_id, delete=False)
-                context["comment_datas"]=comment_datas
+                context["comment_datas"] = comment_datas
             except Comment.DoesNotExist:
-                context["comment_data"]="작성된 댓글이 없습니다."
+                context["comment_data"] = "작성된 댓글이 없습니다."
         except Post.DoesNotExist:
             raise Http404("없거나 삭제된 게시물입니다.")
         return render(request, "post/detail.html", context)
@@ -46,6 +47,7 @@ def detail(request, post_id):
         id_data.delete = True
         id_data.save()
         return HttpResponseRedirect(reverse("post:index"))
+
 
 def edit(request, post_id):
     if request.method == "GET":
@@ -66,6 +68,7 @@ def edit(request, post_id):
         id_data.modify_date = timezone.now()
         id_data.save()
         return HttpResponseRedirect(reverse("post:index"))
+
 
 def comment(request, post_id):
     if request.method == "GET":
