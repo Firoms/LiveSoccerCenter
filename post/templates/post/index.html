@@ -1,18 +1,33 @@
 <!DOCTYPE html>
 <html lang="ko">
+    <head>
+        <title>Football For Fans</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'post/index.css' %}"/>
+    </head>
+    
     <body>
-        <main>
-            {% if Post_data %}
-            {% for data in Post_data %}
-            <a href="{% url 'post:detail' data.id %}">{{ data.content }}</a><br>
-            {% endfor %}
-            {% else %}
-            <p>올라온 게시글이 없습니다.</p>
-            {% endif %}
-            <form action="{% url 'post:add' %}" method="GET">
-                <input type="submit" name="" value="추가하기">
-            </form>
-        </main>
-
+        <h1>Logo</h1>
+        <div>
+            <nav>
+                <ul>
+                    <li>Football Story</li>
+                    <li>Football Article</li>
+                    <li>Football Information</li>
+                </ul>
+            </nav>
+            <main>
+                {% if Post_data %}
+                {% for data in Post_data %}
+                <a href="{% url 'post:detail' data.id %}">{{ data.title }}</a><br>
+                {% endfor %}
+                {% else %}
+                <p>올라온 게시글이 없습니다.</p>
+                {% endif %}
+                <form action="{% url 'post:add' %}" method="GET">
+                    <input type="submit" name="" value="추가하기">
+                </form>
+            </main>
+        </div>
     </body>
 </html>

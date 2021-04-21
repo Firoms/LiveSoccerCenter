@@ -1,0 +1,30 @@
+body{
+    width: 1200px;
+    height: 800px;
+    margin: 0 auto;
+    padding : 0 20px;
+}
+
+h1{
+    height: 50px;
+    width: 80px;
+    margin: 0;
+    padding: 20px;
+}
+div{
+    display: flex;
+}
+nav{
+    height: max-content;
+    width: 200px;
+    height: 710px;
+}
+main{
+    height: 710px;
+}
+
+a{
+    display: flex;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
