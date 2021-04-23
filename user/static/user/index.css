@@ -1,0 +1,25 @@
+.big-bg{
+    background-image: url(images/index_bg.jpg);
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+.title-content{
+    background-color: rgba( 255, 255, 255, 0.7);
+    text-align: center;
+    margin-top: 6%;
+    padding: 30px;
+}
+.title-content img{
+    height: 200px;
+    width: 400px;
+}
+.title-content p{
+    font-size: 1.125rem;
+    margin: 10px 0 42px;
+}
+h2{
+    font-size: 4rem;
+    text-transform: uppercase;
+}

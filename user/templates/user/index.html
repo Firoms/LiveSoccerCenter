@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>Sound Makes Football</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'user/index.css' %}"/>
+    </head>
+    
+    <body>
+        <div class="big-bg">
+            <nav>
+                <o>V.0.0.1</p>
+            </nav>
+
+            <div class="title-content">
+                <img src="{% static 'post/images/logo.png' %}" alt="image">
+                <h2>Sound Makes Football</h2>
+                <p>축구는 소통하는 스포츠입니다. 여러분들의 소리를 들려주세요.</p>
+                <a href="">로그인</a>
+                <a href="{% url 'post:index' %}">둘러보기</a>
+            </div>
+        </div>
+    </body>
+</html>
+
+
+
+
+ 
