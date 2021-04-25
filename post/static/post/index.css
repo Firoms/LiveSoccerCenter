@@ -3,6 +3,9 @@ body{
     height: 800px;
     margin: 0 auto;
     padding : 0 20px;
+    background-color: #f8f9fa;
+}
+header{
     display: flex;
 }
 
@@ -17,13 +20,16 @@ h1 img{
     width: 200px;
 }
 nav{
-    width: 200px;
-    height: 710px;
+    width: 500px;
+    height: 100px;
     margin: 0px;
     padding: 0px;
+    display: flex;
+    margin: 30px 0px;
 }
-a{
+nav a{
     text-decoration: none;
+    margin: 0px 10px;
 }
 main{
     height: 710px;
@@ -33,36 +39,39 @@ section{
     margin: 30px 0px;
 }
 section a{
+    text-decoration: none;
     margin: 0px 10px;
 }
-img {
-    height: 150px;
-    width: 240px;
-}
 .posts{
-    background-color: #ccf2f4;
-    margin: 80px 0 10px 10px;
+    margin: 40px 0 10px 10px;
     padding: 30px 20px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
-    border-style: solid;
-    border-width: 5px;
-    border-color: #aaaaaa;
 }
 .post{
-    background-color: #f1d1d0;
     display: flex;
     flex-direction: column;
     margin: 5px;
-    padding: 10px;
-    border-style: dashed;
-    border-width: 5px;
-    border-color: #f875aa;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 2px solid rgba(0,0,0,.125);
+    width: 300px;
+}
+.post img{
+    height: 180px;
+    width: 300px;
 }
 .post a{
     margin: 0 auto;
+    width: 300px;
+    background-color: white;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: black;
+    text-align: center;
+    text-decoration: none;
 }
 li{
-    list-style: none
+    list-style: none;
 }

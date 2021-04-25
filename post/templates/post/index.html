@@ -8,40 +8,39 @@
     
     <body>
         <header>
-            <a href=""><h1><img src="{% static 'post/images/logo.png' %}" alt="image"></h1></a><nav>
+            <a href=""><h1><img src="{% static 'post/images/logo.png' %}" alt="image"></h1></a>
+            <nav>
                 <a href="">Story</a><br>
                 <a href="">Article</a><br>
                 <a href="">Information </a><br>
             </nav>
-        </header>
-        <main>
             <section>
                 <a href="">회원가입</a>
                 <a href="">로그인</a>
             </section>
-            <article>
-                <div class="posts">
-                        {% if Post_data %}
-                        {% for data in Post_data %}
-                        <div class="post">
-                            <a href="{% url 'post:detail' data.id %}">
-                            {% if data.files %}
-                            <img src="{{ data.files.url }}" alt="image">
-                            {% else %}
-                            <img src="{% static 'post/images/no_image.png' %}" alt="image">
-                            {% endif %}
-                            </a>
-                            <a href="{% url 'post:detail' data.id %}">{{ data.title }}</a>
-                        </div>
-                        {% endfor %}
+        </header>
+        <main>
+            <div class="posts">
+                    {% if Post_data %}
+                    {% for data in Post_data %}
+                    <div class="post">
+                        <a href="{% url 'post:detail' data.id %}">
+                        {% if data.files %}
+                        <img src="{{ data.files.url }}" alt="image">
                         {% else %}
-                        <p>올라온 게시글이 없습니다.</p>
+                        <img src="{% static 'post/images/no_image.png' %}" alt="image">
                         {% endif %}
-                </div>
-                <form action="{% url 'post:add' %}" method="GET">
-                    <input type="submit" name="" value="추가하기">
-                </form>
-            </article>
+                        </a>
+                        <a href="{% url 'post:detail' data.id %}">{{ data.title }}</a>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <p>올라온 게시글이 없습니다.</p>
+                    {% endif %}
+            </div>
+            <form action="{% url 'post:add' %}" method="GET">
+                <input type="submit" name="" value="추가하기">
+            </form>
         </main>
     </body>
 </html>
