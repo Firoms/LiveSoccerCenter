@@ -1,0 +1,16 @@
+
+<!DOCTYPE html>
+    <body>
+        <main>
+            <p>로그인</p>
+            <form action="{% url 'user:login' %}" method="POST">
+                {% csrf_token %}
+                <div>
+                    <p>아이디: </p><input type="text" name="id" wrap = "virtual" rows = "1" cols="30"><br>
+                    <p>비밀번호: </p><input type="password" name="pw" wrap = "virtual" rows = "1" cols="30"><br>
+                </div>
+                <input type="submit" name="" value="로그인">
+            </form>
+        </main>
+    </body>
+</html>
