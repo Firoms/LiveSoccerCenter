@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-  <body>
+{% extends './base.html' %}
+{% block content %}
     <main>
       <form action="{% url 'post:edit' id_data.id %}" method="POST">
         {% csrf_token %}
@@ -11,7 +11,4 @@
         <input type="submit" name="" value="수정하기">
       </form>
     </main>
-
-  </body>
-
-</html>
+{% endblock %}

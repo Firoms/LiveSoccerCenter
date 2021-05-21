@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-  <body>
+{% extends './base.html' %}
+{% block content %}
     <main>
       {% if id_data %}
         <p>제목 : {{ id_data.title }}</p>
@@ -35,5 +35,4 @@
         <p>작성된 댓글이 없습니다.</p>.
       {% endif %}
     </main>
-  </body>
-</html>
+{% endblock %}
