@@ -13,7 +13,7 @@ class Post(models.Model):
     delete = models.BooleanField(default=False)
     files = models.FileField(
         upload_to="Post/%Y/%m/%d/", max_length=None, null=True, blank=True
-    )  # None 안될 시 100
+    )
 
     def __str__(self):
         return f"{self.id}. {self.title}"

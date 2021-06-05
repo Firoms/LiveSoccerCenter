@@ -1,14 +1,10 @@
 {% extends './base.html' %}
 {% block content %}
-        <main>
-            <form action="{% url 'post:add' %}" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div>
-                    <p>제목: </p><input type="text" name="title" wrap = "virtual" rows = "1" cols="30"><br>
-                    <p>상세내용: </p><input type="text" name="content" wrap = "virtual" rows = "1" cols="30"><br>
-                    <p>파일업로드: </p><input type="file" name="files" accept="image/*,.pdf"><br>
-                </div>
-                <input type="submit" name="" value="추가하기">
-            </form>
-        </main>
+    <main>
+        <form action="{% url 'post:add' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" name="" value="추가하기">
+        </form>
+    </main>
 {% endblock %}
