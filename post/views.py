@@ -23,13 +23,13 @@ def add(request):
             writer = User.objects.get(pk=1)
             # files = request.FILES["files"]
             # files = request.FILES.get("files", "")
-            files = form.cleaned_data['files']
+            files = form.cleaned_data["files"]
             add_list = Post(title=title, content=content, writer=writer, files=files)
             add_list.save()
             return HttpResponseRedirect(reverse("post:index"))
     else:
         form = AddForm()
-    return render(request, "post/add.html", {'form':form})
+    return render(request, "post/add.html", {"form": form})
 
 
 def detail(request, post_id):
@@ -80,11 +80,12 @@ def edit(request, post_id):
         except Post.DoesNotExist:
             raise Http404("없거나 삭제된 게시물입니다.")
 
-        context = {"id_data": id_data, "form":form}
+        context = {"id_data": id_data, "form": form}
         return render(request, "post/edit.html", context)
 
     print("333")
-    return render(request, "post/edit.html", {"form":form})
+    return render(request, "post/edit.html", {"form": form})
+
 
 def comment(request, post_id):
     if request.method == "GET":

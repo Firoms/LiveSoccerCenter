@@ -12,9 +12,5 @@ class AddForm(forms.ModelForm):
     # files = forms.FileField(label="File", widget=ClearableFileInput)
     class Meta:
         model = Post
-        fields = [
-            'title',
-            'content',
-            'files'
-        ]
+        fields = ["title", "content", "files"]
         # label 키워드
