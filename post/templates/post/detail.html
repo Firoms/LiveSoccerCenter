@@ -5,10 +5,11 @@
         <p>제목 : {{ id_data.title }}</p>
         <p>내용 : {{ id_data.content }}</p>
         {% if id_data.files %}
+          <a class="btn" href={{ id_data.files.url }} download>
           <p>파일 : {{ id_data.get_file_name }}</p>
-          <a class="btn" href={{ id_data.files.url }} download><img src="{{ id_data.files.url }}" alt=""></a>
+          <img src="{{ id_data.files.url }}" alt=""></a>
         {% endif %}
-        <form action="{% url 'post:edit' id_data.id %}" method="GET">
+        <form action="{% url 'post:edit' id_data.id %}" method="GET" enctype="multipart/form-data">
           <input type="submit" name="" value="수정하기">
         </form>
         <form action="{% url 'post:detail' id_data.id %}" method="POST">

@@ -9,7 +9,7 @@
                     <a href="{% url 'post:detail' data.id %}">
                         {% if data.files %}
                         <div class="ratio ratio-4x3 border-bottom border-2">
-                            <img src="{{ data.files.url }}" class="card-img-top h-100" alt="...">
+                            <img src="{{ data.files.url }}" class="card-img-top h-100" onerror="this.onerror=null; this.src='{% static 'post/images/no_image.png' %}'" alt="...">
                         </div>
                         {% else %}
                         <div class="ratio ratio-4x3 border-bottom border-2">
