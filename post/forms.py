@@ -7,6 +7,7 @@ class AddForm(forms.Form):
     content = forms.CharField(label="내용")
     files = forms.FileField(label="파일")
 
+
 # class AddForm(forms.ModelForm):
 #     # files = forms.FileField(label="File")
 #     class Meta:

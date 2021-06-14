@@ -1,3 +1,4 @@
+from django.http.response import Http404
 from post.forms import AddForm
 from django.shortcuts import render
 from .models import Post, Comment
@@ -54,7 +55,6 @@ def detail(request, post_id):
 def edit(request, post_id):
     if request.method == "POST":
         form = AddForm(request.POST, request.FILES)
-        print(form)
         if form.is_valid():
             title = form.cleaned_data["title"]
             content = form.cleaned_data["content"]
@@ -70,20 +70,16 @@ def edit(request, post_id):
         try:
             id_data = Post.objects.get(pk=post_id)
             # form = AddForm(instance=id_data)
-
-            print(id_data.title, id_data.content)
             form = AddForm()
-            form.initial['title'] = id_data.title
-            form.initial['content'] = id_data.content
-            form.initial['files'] = id_data.files
-            print(id_data.files)
+            form.initial["title"] = id_data.title
+            form.initial["content"] = id_data.content
+            form.initial["files"] = id_data.files
         except Post.DoesNotExist:
             raise Http404("없거나 삭제된 게시물입니다.")
-
         context = {"id_data": id_data, "form": form}
         return render(request, "post/edit.html", context)
+
     id_data = Post.objects.get(pk=post_id)
-    print("333")
     return render(request, "post/edit.html", {"id_data": id_data, "form": form})
 
 
