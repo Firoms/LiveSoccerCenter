@@ -1,8 +1,8 @@
 {% load static %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5 ml-auto">
     <div class="container">
-        <a class="navbar-brand" href="#">
-            <img src="{% static 'post/images/logo.png' %}" alt="" width="230" height="100">
+        <a class="navbar-brand" href="{% url 'post:index' %}">
+            <img src="{% static 'post/images/main_logo.png' %}" alt="" width="230" height="100">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"

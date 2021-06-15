@@ -5,8 +5,10 @@
     <title>Sound Makes Football</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'post/index.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'post/bootstrap.min.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'post/bootstrap.min.css.map' %}" />
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'post/bootstrap.min.css' %}" /> {% endcomment %}
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'post/bootstrap.min.css.map' %}" /> {% endcomment %}
+    {% block staticfiles %}
+    {% endblock %}
 </head>
 
 <body>

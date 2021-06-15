@@ -1,11 +1,21 @@
 footer{
-    background: #432;
-    text-align: center;
-    padding: 26px 0;
-
+    width: 70%;
+    display: grid;
+    grid-template-columns: 5fr 3fr 5fr;
+    gap: 35px;
+    margin: 0 auto;
 }
-footer p {
-    color: #fff;
-    margin-top: 5px;
-    font-size: 0.875rem;
+footer aside{
+    margin-top: 100px;
+    text-align: center;
+}
+footer main{
+    margin: 50px 0;
+    text-align: center;
+}
+footer main img{
+    margin: 20px 10px 15px 10px ;
+}
+p{
+    margin: 0;
 }
