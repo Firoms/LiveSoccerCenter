@@ -23,6 +23,8 @@ def signup_page(request):
                 add_list.save()
                 return render(request, "user/signup_c.html")
         # ERROR
+        # alert 창을 이용
+        # 나중에는 ajax를 이용
         form = SignupForm()
         return render(request, "user/signup.html", {"form":form})
     else:
@@ -39,6 +41,8 @@ def login_page(request):
             user = authenticate(request, username=user_id, password=user_pw)
             if user_id is not None:
                 login(request, user)
+                # render로 context에 user를 넘겨준다.
+                # django template user authentication
                 return HttpResponseRedirect(reverse("post:index"))
         # ERROR
         form = LoginForm()
