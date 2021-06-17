@@ -1,0 +1,24 @@
+
+h1{
+    color: yellow;
+}
+h2{
+    color: pink;
+    margin-top: 100px;
+}
+main p{
+    color: azure;
+}
+main{
+    background-image: url(images/barcelona/바르셀로나.jpg);
+    text-align: center;
+    padding: 50px;
+}
+main img{
+    width: 250px;
+    height: 250px;
+}
+main div img{
+    width: 430px;
+    height: 250px;
+}

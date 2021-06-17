@@ -8,4 +8,5 @@ urlpatterns = [
     path("detail/<int:post_id>/", views.detail, name="detail"),
     path("edit/<int:post_id>/", views.edit, name="edit"),
     path("comment/<int:post_id>/", views.comment, name="comment"),
+    path("barcelona", views.barca, name="barca"),
 ]
