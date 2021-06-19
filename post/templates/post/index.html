@@ -1,24 +1,24 @@
 {% extends './base.html' %}
 {% load static %}
 {% block content %}
-    <div class="row row-cols-1 row-cols-md-3 g-4 ms-5 me-5 mb-5 container">
+    <div>
         {% if Post_data %}
             {% for data in Post_data %}
-            <div class="col p-3">
-                <div class="card h-100">
+            <div>
+                <div>
                     <a href="{% url 'post:detail' data.id %}">
                         {% if data.files %}
-                        <div class="ratio ratio-4x3 border-bottom border-2">
-                            <img src="{{ data.files.url }}" class="card-img-top h-100" onerror="this.onerror=null; this.src='{% static 'post/images/no_image.png' %}'" alt="...">
+                        <div>
+                            <img src="{{ data.files.url }}" onerror="this.onerror=null; this.src='{% static 'post/images/no_image.png' %}'" alt="...">
                         </div>
                         {% else %}
-                        <div class="ratio ratio-4x3 border-bottom border-2">
-                            <img src="{% static 'post/images/no_image.png' %}" class="card-img-top h-100 " alt="...">
+                        <div>
+                            <img src="{% static 'post/images/no_image.png' %}" alt="...">
                         </div>
                         {% endif %}
-                        <div class="card-body">
-                            <h5 class="card-title">{{ data.title }}</h5>
-                            <p class="card-text">{{ data.pub_date }} {{ data.writer }}</p>
+                        <div>
+                            <h5>{{ data.title }}</h5>
+                            <p>{{ data.pub_date }} {{ data.writer }}</p>
                         </div>
 
                     </a>
@@ -26,14 +26,14 @@
             </div>
             {% endfor %}
         {% else %}
-        <div class="col">
-            <div class="card h-100">
-                <div class="ratio ratio-4x3">
-                    <img src="{% static 'post/images/no_image.png' %}" class="card-img-top h-100" alt="...">
+        <div>
+            <div>
+                <div>
+                    <img src="{% static 'post/images/no_image.png' %}" alt="...">
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">게시물이 없습니다.</h5>
-                    <p class="card-text">새로운 게시물을 등록해주세요.</p>
+                <div>
+                    <h5>게시물이 없습니다.</h5>
+                    <p>새로운 게시물을 등록해주세요.</p>
                 </div>
             </div>
         </div>
@@ -41,8 +41,8 @@
     </div>
 
     <form action="{% url 'post:add' %}" method="GET">
-        <div class="col-12">
-            <button type="submit" class="btn btn-primary">추가하기</button>
+        <div>
+            <button type="submit">추가하기</button>
         </div>
     </form>
 {% endblock %}

@@ -96,3 +96,6 @@ def comment(request, post_id):
 
 def barca(request):
     return render(request, "post/barcelona.html")
+
+def ulsan(request):
+    return render(request, "post/ulsan.html")

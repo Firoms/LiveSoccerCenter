@@ -1,16 +1,24 @@
 {% load static %}
 <nav>
-    <div>
+    <aside>
         <a href="{% url 'user:login' %}">로그인</a>
         <a href="{% url 'user:signup' %}">회원가입</a>
-    </div>
-    <hr>
-    <div>
+    </aside>
+    <section>
         <a href="{% url 'post:index' %}">
             <img src="{% static 'post/images/main_logo.png' %}" alt="" width="230" height="100">
         </a>
-        <a href="{% url 'post:index' %}">Postings</a>
-        <a class="dropdown">Information</a>
-        <a href="{% url 'post:barca' %}">Barcelona</a>
-    </div>
+        <div>
+            <a class="menu" href="{% url 'post:index' %}">Postings</a>
+        </div>
+        <div class="dropdown">
+            <a class="menu">Informations</a>
+            <div class="dropdown-content">
+                <a href="{% url 'post:barca' %}">Barcelona</a>
+                <a href="{% url 'post:ulsan' %}">UlsanHyundae</a>
+            </div>
+        </div>
+    </section>
+    <hr>
 </nav>
+
