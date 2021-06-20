@@ -18,7 +18,7 @@
                         {% endif %}
                         <div>
                             <h5>{{ data.title }}</h5>
-                            <p>{{ data.pub_date }} {{ data.writer }}</p>
+                            <p>{{ data.pub_date }} {{ data.writer.first_name }}</p>
                         </div>
 
                     </a>
@@ -39,10 +39,16 @@
         </div>
         {% endif %}
     </div>
-
+    {% if user.is_authenticated %}
     <form action="{% url 'post:add' %}" method="GET">
         <div>
             <button type="submit">추가하기</button>
         </div>
     </form>
+    {% endif %}
+    {% if messages %}
+    {% for message in messages %}
+    <script>alert("{{ message }}")</script>
+    {% endfor %}
+    {% endif %}
 {% endblock %}

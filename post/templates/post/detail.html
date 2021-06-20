@@ -3,31 +3,37 @@
     <main>
       {% if id_data %}
         <p>제목 : {{ id_data.title }}</p>
-        <p>내용 : {{ id_data.content }}</p>
+        <p>작성자 : {{ id_data.writer.first_name }}</p>
         {% if id_data.files %}
           <a class="btn" href={{ id_data.files.url }} download>
           <p>파일 : {{ id_data.get_file_name }}</p>
           <img src="{{ id_data.files.url }}" alt=""></a>
         {% endif %}
-        <form action="{% url 'post:edit' id_data.id %}" method="GET" enctype="multipart/form-data">
-          <input type="submit" name="" value="수정하기">
-        </form>
-        <form action="{% url 'post:detail' id_data.id %}" method="POST">
-          {% csrf_token %}
-          <input type="submit" name="" value="삭제하기">
-        </form>
-        <form action="{% url 'post:comment' id_data.id %}" method="POST">
-          <p>댓글: </p><input type="text" name="comment" wrap = "virtual" rows = "1" cols="30"><br>
-          {% csrf_token %}
-          <input type="submit" name="" value="댓글달기">
-        </form>
+        <p>내용 : {{ id_data.content }}</p>
+        {% if user|lower == id_data.writer|lower %}
+          <form action="{% url 'post:edit' id_data.id %}" method="GET" enctype="multipart/form-data">
+            <input type="submit" name="" value="수정하기">
+          </form>
+          <form action="{% url 'post:detail' id_data.id %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" name="" value="삭제하기">
+          </form>
+        {% endif %}
+        <p><댓글></p>
+        {% if user.is_authenticated %}
+          <form action="{% url 'post:comment' id_data.id %}" method="POST">
+            <input type="text" name="comment" wrap = "virtual" rows = "1" cols="30"><br>
+            {% csrf_token %}
+            <input type="submit" name="" value="댓글달기">
+          </form>
+        {% endif %}
       {% else %}
         <p>게시글 내용이 없습니다.</p>
       {% endif %}
       {% if comment_datas %}
         {% for comment_data in comment_datas %}
           <div>
-            <p>작성자 : {{ comment_data.writer }}</p>
+            <p>작성자 : {{ comment_data.writer.first_name }}</p>
             <p>날짜 : {{ comment_data.pub_date }}</p>
             <p>내용 : {{ comment_data.content }}</p>
           </div>

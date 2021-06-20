@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from .models import User
+from post.models import Post
 from user.forms import SignupForm, LoginForm
-from django.contrib.auth import authenticate, login
-from django.http import HttpResponseRedirect
+from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
+from django.http import HttpResponseRedirect
+from django.contrib import messages
 
 # Create your views here.
 def index(request):
@@ -15,21 +17,21 @@ def signup_page(request):
         form = SignupForm(request.POST)
         if form.is_valid():
             user_id = form.cleaned_data["ID"]
-            if form.cleaned_data["PW"] == form.cleaned_data["PW_C"]:
+            if User.objects.filter(username=user_id).exists():
+                messages.info(request, '이미 존재하는 유저이름입니다.')
+            elif form.cleaned_data["PW"] != form.cleaned_data["PW_C"]:
+                messages.info(request, '비밀번호가 서로 일치하지 않습니다.')
+            else:
                 user_pw = form.cleaned_data["PW"]
-                nickname = form.cleaned_data["nickname"]
-                add_list = User(username=user_id, nickname=nickname)
+                first_name = form.cleaned_data["first_name"]
+                add_list = User(username=user_id, first_name=first_name)
                 add_list.set_password(user_pw)
                 add_list.save()
-                return render(request, "user/signup_c.html")
-        # ERROR
-        # alert 창을 이용
-        # 나중에는 ajax를 이용
-        form = SignupForm()
-        return render(request, "user/signup.html", {"form":form})
-    else:
-        form = SignupForm()
-        return render(request, "user/signup.html", {"form":form})
+                messages.info(request, '회원가입이 정상적으로 완료되었습니다.')
+                return HttpResponseRedirect(reverse("post:index"))
+    
+    form = SignupForm()
+    return render(request, "user/signup.html", {"form":form})
 
 
 def login_page(request):
@@ -39,16 +41,17 @@ def login_page(request):
             user_id = form.cleaned_data["ID"]
             user_pw = form.cleaned_data["PW"]
             user = authenticate(request, username=user_id, password=user_pw)
-            if user_id is not None:
+            print(user)
+            if user is not None:
                 login(request, user)
-                # render로 context에 user를 넘겨준다.
-                # django template user authentication
                 return HttpResponseRedirect(reverse("post:index"))
-        # ERROR
-        form = LoginForm()
-        return render(request, "user/login.html", {"form":form})
-    else:
-        form = LoginForm()
-        return render(request, "user/login.html", {"form":form})
+            else:
+                messages.info(request, '아이디가 없거나 비밀번호가 잘못되었습니다.')
+                return HttpResponseRedirect(reverse("user:login"))
 
-# authenticate 사용하여 none 인지 확인 >>
+    form = LoginForm()
+    return render(request, "user/login.html", {"form":form})
+
+def logout_page(request):
+    logout(request)
+    return HttpResponseRedirect(reverse("post:index"))

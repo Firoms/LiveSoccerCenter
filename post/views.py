@@ -20,7 +20,7 @@ def add(request):
         if form.is_valid():
             title = form.cleaned_data["title"]
             content = form.cleaned_data["content"]
-            writer = User.objects.get(pk=1)
+            writer = request.user
             # files = request.FILES["files"]
             # files = request.FILES.get("files", "")
             files = form.cleaned_data["files"]
@@ -89,7 +89,7 @@ def comment(request, post_id):
     elif request.method == "POST":
         content = request.POST["comment"]
         post = Post.objects.get(pk=post_id)
-        writer = User.objects.get(pk=1)
+        writer = request.user
         add_list = Comment(content=content, post=post, writer=writer)
         add_list.save()
         return HttpResponseRedirect(reverse("post:detail", args=(post_id,)))
