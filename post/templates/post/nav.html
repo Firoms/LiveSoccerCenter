@@ -2,13 +2,13 @@
 <nav>
     {% if not user.is_authenticated %}
     <aside>
-        <a href="{% url 'user:login' %}">로그인</a>
-        <a href="{% url 'user:signup' %}">회원가입</a>
+        <a class="log" href="{% url 'user:login' %}">로그인</a>
+        <a class="log" href="{% url 'user:signup' %}">회원가입</a>
     </aside>
     {% else %}
     <aside>
         <a>환영합니다. {{ user.first_name }}님</a>
-        <a href="{% url 'user:logout' %}">로그아웃</a>
+        <a class="log" href="{% url 'user:logout' %}">로그아웃</a>
     </aside>
     {% endif %}
     
@@ -23,7 +23,7 @@
             <a class="menu" href="{% url 'post:index' %}">게시판</a>
         </div>
         <div class="dropdown hover-menu">
-            <a class="menu" href="#">팬 사이트</a>
+            <a class="menu" href="#">팬 페이지</a>
             <div class="dropdown-content">
                 <a href="{% url 'post:barca' %}">바르셀로나</a>
                 <a href="{% url 'post:ulsan' %}">울산현대</a>

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Sunflower:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cute+Font&display=swap');
 nav{
     margin:0 15% 50px 15%;
 }
@@ -13,7 +14,12 @@ nav aside{
     padding: 5px 0;
 }
 nav aside a{
-    font-size: 15px;
+    font-size: 20px;
+    font-family: 'Cute Font', cursive;
+    font-weight: bolder;
+}
+.log{
+    color: red;
 }
 nav section{
     display: flex;

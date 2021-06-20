@@ -6,23 +6,26 @@ main{
 }
 form{
     border: 3px dashed rgba(117, 117, 117, 0.2);
-    padding: 20px 0px;
     margin: 80px auto 120px auto;
-    width: 700px;
+    padding:20px 0px 20px 20px;
+    width: 740px;
+    font-size: 30px;
+    font-family: 'Do Hyeon', sans-serif;
 }
 label{
-    margin: 60px 20px 20px 20px;
+    margin: 60px 20px 20px 0px;
     font-size: 30px;
     font-family: 'Do Hyeon', sans-serif;
 }
 input[type='text']{
-    margin: 5px 20px 45px 20px;
+    margin: 5px 20px 45px 0px;
     padding: 3px;
     width: 620px;
     font-family: 'Poor Story', cursive;
     font-size: 15px;
     height: 30px;
 }
+
 input[type='submit']{
     font-family: 'Do Hyeon', sans-serif;
     border: 3px solid #132C33; 
@@ -37,6 +40,7 @@ input[type='submit']:hover{
     background-color: #126E82;
 }
 input[type='file']{
+    margin-top: 50px;
     width: 450px;
     font-family: 'Gamja Flower', cursive;
     font-size: 20px;
