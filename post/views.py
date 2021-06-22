@@ -94,8 +94,10 @@ def comment(request, post_id):
         add_list.save()
         return HttpResponseRedirect(reverse("post:detail", args=(post_id,)))
 
+
 def barca(request):
     return render(request, "post/barcelona.html")
+
 
 def ulsan(request):
     return render(request, "post/ulsan.html")

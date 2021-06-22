@@ -18,20 +18,20 @@ def signup_page(request):
         if form.is_valid():
             user_id = form.cleaned_data["ID"]
             if User.objects.filter(username=user_id).exists():
-                messages.info(request, '이미 존재하는 유저이름입니다.')
+                messages.info(request, "이미 존재하는 유저이름입니다.")
             elif form.cleaned_data["PW"] != form.cleaned_data["PW_C"]:
-                messages.info(request, '비밀번호가 서로 일치하지 않습니다.')
+                messages.info(request, "비밀번호가 서로 일치하지 않습니다.")
             else:
                 user_pw = form.cleaned_data["PW"]
                 first_name = form.cleaned_data["first_name"]
                 add_list = User(username=user_id, first_name=first_name)
                 add_list.set_password(user_pw)
                 add_list.save()
-                messages.info(request, '회원가입이 정상적으로 완료되었습니다.')
+                messages.info(request, "회원가입이 정상적으로 완료되었습니다.")
                 return HttpResponseRedirect(reverse("post:index"))
-    
+
     form = SignupForm()
-    return render(request, "user/signup.html", {"form":form})
+    return render(request, "user/signup.html", {"form": form})
 
 
 def login_page(request):
@@ -46,11 +46,12 @@ def login_page(request):
                 login(request, user)
                 return HttpResponseRedirect(reverse("post:index"))
             else:
-                messages.info(request, '아이디가 없거나 비밀번호가 잘못되었습니다.')
+                messages.info(request, "아이디가 없거나 비밀번호가 잘못되었습니다.")
                 return HttpResponseRedirect(reverse("user:login"))
 
     form = LoginForm()
-    return render(request, "user/login.html", {"form":form})
+    return render(request, "user/login.html", {"form": form})
+
 
 def logout_page(request):
     logout(request)
