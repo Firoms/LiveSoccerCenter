@@ -10,4 +10,5 @@ urlpatterns = [
     path("comment/<int:post_id>/", views.comment, name="comment"),
     path("barcelona", views.barca, name="barca"),
     path("ulsan", views.ulsan, name="ulsan"),
+    path("test", views.test, name="test"),
 ]

@@ -1,4 +1,4 @@
-from django.http.response import Http404
+from django.http.response import Http404, HttpResponse
 from post.forms import AddForm
 from django.shortcuts import render
 from .models import Post, Comment
@@ -101,3 +101,9 @@ def barca(request):
 
 def ulsan(request):
     return render(request, "post/ulsan.html")
+
+
+def test(request):
+    import random
+    text = hash(random.randint(0, 100000000000000000))
+    return HttpResponse(text)
