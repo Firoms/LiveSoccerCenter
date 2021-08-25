@@ -105,5 +105,6 @@ def ulsan(request):
 
 def test(request):
     import random
+
     text = hash(random.randint(0, 100000000000000000))
     return HttpResponse(text)
